@@ -32,7 +32,8 @@ class JadwalController extends Controller
      */
     public function actionIndex()
     {
-        return $this->redirect(['site/index']);
+        // return $this->redirect(['site/index']);
+        return $this->render('index');
         echo "redirect to Home";
     }
 

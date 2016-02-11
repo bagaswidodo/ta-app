@@ -17,22 +17,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Buat Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'nim',
-            'nama',
-            'no_telpon',
-            'progdi.nama',
-            'konsentrasi',
-            // 'judul',
-            // 'status',
-            // 'deskripsi:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <td>No</td>
+            <td>Hari</td>
+            <td>Jam Bimbingan</td>
+            <td>Action</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Senin</td>
+            <td>12.00-15.00</td>
+            <td>
+                <button class="btn btn-success">Edit</button>
+            </td>
+        </tr>
+    </table>
 
 </div>

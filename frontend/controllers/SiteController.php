@@ -12,6 +12,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\SqlDataProvider;
 
 /**
  * Site controller
@@ -211,5 +212,26 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionBimbingan()
+    {
+        $sql = "select m.nim,m.nama,m.judul,p.nama_progdi,k.nama_konsentrasi
+                from tb_bimbingan b
+                join tb_mhs m on m.nim = b.nim
+                join tb_progdi p on p.kd_progdi = m.progdi
+                join tb_konsentrasi k on k.kd_konsentrasi = m.konsentrasi
+                where b.kd_dosen = :dosen";
+        $dataProvider = new SqlDataProvider([
+            'sql' => $sql,
+            'params' => [':dosen' => Yii::$app->user->identity->kd_dosen],
+        ]);
+
+        // var_dump($dataProvider);
+
+        return $this->render('bimbingan',
+            ['dataProvider' => $dataProvider]
+        );
+        // return $this->render('bimbingan');
     }
 }

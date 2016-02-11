@@ -46,7 +46,7 @@ AppAsset::register($this);
         $menuItems = 
         [
             ['label' =>  'Jadwal dosen' , 'url' => ['/jadwal/index']],
-            ['label' =>  'Bimbingan' , 'url' => ['/dosen/Bimbingan']],
+            ['label' =>  'Bimbingan' , 'url' => ['/site/bimbingan']],
             ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
