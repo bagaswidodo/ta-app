@@ -80,18 +80,32 @@ class SiteController extends Controller
         ]);
          $filename = "Proposal-Export-" . Date('YmdGis') . '-Mahasiswa.xls';
 
+         $model = $dataProvider->getModels();
+
          header('Content-type:application/vnd-ms-excel');
          header('Content-Disposition: attachement;filename='.$filename);
-
-         $model = $this->renderPartial('cetakproposal',['dataProvider' => $dataProvider]);
-
-         echo $model;
-
-        // var_dump($dataProvider);
-
-        // return $this->render('proposal',
-        //     ['dataProvider' => $dataProvider]
-        // );
+         echo "<h1>Proposal Mahasiswa</h1>";
+         echo "<table border=1>
+                 <tr>
+                    <td>No</td>
+                    <td>Nim</td>
+                    <td>Nama Mahasiswa</td>
+                    <td>Judul Proposal</td>
+                    <td>Pembimbing</td>
+                </tr>";
+                $no = 1;
+         foreach ($model as $key => $value) {      
+             echo "
+                 <tr>
+                    <td>".$no."</td>
+                    <td>". $value['nim']."</td>
+                    <td>".$value['nama_mahasiswa']."</td>
+                    <td>".$value['judul']."</td>
+                    <td>".$value['nama_dosen']."</td>
+                </tr>";
+                $no++;
+         }
+         echo "</table>";
     }
 
     public function actionLogin()
