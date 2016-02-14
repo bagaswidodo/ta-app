@@ -27,7 +27,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index','proposal'],
+                        'actions' => ['logout', 'index','proposal','proposal-export'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -70,6 +70,28 @@ class SiteController extends Controller
         return $this->render('proposal',
             ['dataProvider' => $dataProvider]
         );
+    }
+
+    public function actionProposalExport()
+    {
+        // return 'Export excel';
+         $dataProvider = new SqlDataProvider([
+            'sql' => "SELECT * FROM proposal"
+        ]);
+         $filename = "Proposal-Export-" . Date('YmdGis') . '-Mahasiswa.xls';
+
+         header('Content-type:application/vnd-ms-excel');
+         header('Content-Disposition: attachement;filename='.$filename);
+
+         $model = $this->renderPartial('cetakproposal',['dataProvider' => $dataProvider]);
+
+         echo $model;
+
+        // var_dump($dataProvider);
+
+        // return $this->render('proposal',
+        //     ['dataProvider' => $dataProvider]
+        // );
     }
 
     public function actionLogin()

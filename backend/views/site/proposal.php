@@ -1,6 +1,7 @@
 <?php
 
 use yii\grid\GridView;
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = 'Proposal Skripsi Mahasiswa';
@@ -12,6 +13,7 @@ $this->title = 'Proposal Skripsi Mahasiswa';
 
         <div class="row">
             <h1>Daftar Proposal Terdaftar</h1>
+        <?= Html::a('Export Excel',['proposal-export'],['class'=>'btn btn-primary']); ?>
 
                 <?= 
 
