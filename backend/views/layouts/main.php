@@ -42,7 +42,7 @@ AppAsset::register($this);
     } else {
         $menuItems = [
             ['label' => 'Dashboard', 'url' => ['site/proposal']],
-            ['label' => 'Pembimbing', 'url' => ['site/proposal']],
+            ['label' => 'Pembimbing', 'url' => ['bimbingan/index']],
             [
                 'label' => 'Master',
                 'items' => [
@@ -53,7 +53,7 @@ AppAsset::register($this);
                 ],
             ],
             [
-                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                'label' => 'Logout (' . Yii::$app->user->identity->nama . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']
             ]       
