@@ -67,4 +67,6 @@ class Dosen extends \yii\db\ActiveRecord
     {
         return $this->hasMany(TbJadwal::className(), ['kd_dosen' => 'kd_dosen']);
     }
+
+    
 }
