@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use backend\models\Progdi;
-use backend\models\Konsentrasi;
 
 
 /* @var $this yii\web\View */
@@ -26,13 +25,6 @@ use backend\models\Konsentrasi;
      <?=
         $form->field($model,'progdi')->dropDownList(
             ArrayHelper::map(Progdi::find()->all(),'kd_progdi','nama_progdi'))
-
-     ?>
-
-    <!-- for future work hope fully auto select when progdi 67 kd_progdi 67xx and if 68 68xx -->
-     <?=
-        $form->field($model,'konsentrasi')->dropDownList(
-            ArrayHelper::map(Konsentrasi::find()->all(),'kd_konsentrasi','nama_konsentrasi'))
 
      ?>
 

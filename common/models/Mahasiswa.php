@@ -40,7 +40,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'nama', 'no_telpon', 'progdi', 'judul', 'status', 'deskripsi', 'foto', 'proposal', 'kst', 'transkrip', 'usulan_pembimbing_1', 'usulan_pembimbing_2'], 'required'],
+            [['nim', 'nama', 'no_telpon', 'progdi', 'judul', 'status', 'deskripsi'], 'required'],
             [['nim', 'progdi', 'status', 'foto', 'proposal', 'kst', 'transkrip', 'usulan_pembimbing_1', 'usulan_pembimbing_2'], 'integer'],
             [['deskripsi'], 'string'],
             [['nama'], 'string', 'max' => 100],
