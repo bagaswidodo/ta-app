@@ -4,13 +4,13 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Jadwal;
-use yii\data\ActiveDataProvider;
+use frontend\models\JadwalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MahasiswaController implements the CRUD actions for Mahasiswa model.
+ * JadwalController implements the CRUD actions for Jadwal model.
  */
 class JadwalController extends Controller
 {
@@ -27,29 +27,44 @@ class JadwalController extends Controller
     }
 
     /**
-     * Lists all Mahasiswa models.
+     * Lists all Jadwal models.
      * @return mixed
      */
     public function actionIndex()
     {
-        // return $this->redirect(['site/index']);
-        return $this->render('index');
-        echo "redirect to Home";
+        $searchModel = new JadwalSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
-     * Creates a new Mahasiswa model.
+     * Displays a single Jadwal model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Jadwal model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Mahasiswa();
+        $model = new Jadwal();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // return $this->redirect(['view', 'id' => $model->nim]);
-            return $this->redirect(['thankyou']);
-
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -57,13 +72,8 @@ class JadwalController extends Controller
         }
     }
 
-    public function actionThankyou()
-    {
-        return $this->render('thankyou');
-    }
-
     /**
-     * Updates an existing Mahasiswa model.
+     * Updates an existing Jadwal model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -73,7 +83,7 @@ class JadwalController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nim]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -82,7 +92,7 @@ class JadwalController extends Controller
     }
 
     /**
-     * Deletes an existing Mahasiswa model.
+     * Deletes an existing Jadwal model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -95,15 +105,15 @@ class JadwalController extends Controller
     }
 
     /**
-     * Finds the Mahasiswa model based on its primary key value.
+     * Finds the Jadwal model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Mahasiswa the loaded model
+     * @return Jadwal the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Mahasiswa::findOne($id)) !== null) {
+        if (($model = Jadwal::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

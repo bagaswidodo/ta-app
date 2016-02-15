@@ -4,34 +4,35 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
+/* @var $searchModel frontend\models\JadwalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Jadwal Mengajar Dosen';
+$this->title = 'Jadwal Bimbingan ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="mahasiswa-index">
+<div class="jadwal-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?><small><?= Yii::$app->user->identity->nama ?></small></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Buat Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <table class="table table-bordered table-hover table-striped">
-        <tr>
-            <td>No</td>
-            <td>Hari</td>
-            <td>Jam Bimbingan</td>
-            <td>Action</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Senin</td>
-            <td>12.00-15.00</td>
-            <td>
-                <button class="btn btn-success">Edit</button>
-            </td>
-        </tr>
-    </table>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            // 'id',
+            'kd_dosen',
+            'hari',
+            'jam_mulai',
+            'jam_selesai',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>

@@ -7,6 +7,7 @@ use Yii;
 /**
  * This is the model class for table "tb_jadwal".
  *
+ * @property integer $id
  * @property integer $kd_dosen
  * @property integer $hari
  * @property string $jam_mulai
@@ -42,7 +43,8 @@ class Jadwal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'kd_dosen' => 'Kd Dosen',
+            'id' => 'ID',
+            'kd_dosen' => 'Kode Dosen',
             'hari' => 'Hari',
             'jam_mulai' => 'Jam Mulai',
             'jam_selesai' => 'Jam Selesai',
