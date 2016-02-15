@@ -47,7 +47,7 @@ AppAsset::register($this);
                 'label' => 'Master',
                 'items' => [
                     ['label' => 'Progdi', 'url' => ['/progdi/index']],
-                    ['label' => 'Konsentrasi', 'url' => ['/konsentrasi/index']],
+                    // ['label' => 'Konsentrasi', 'url' => ['/konsentrasi/index']],
                     ['label' => 'Daftar Dosen', 'url' => ['/progdi/index']],
                     ['label' => 'Daftar Mahasiswa', 'url' => ['/mahasiswa/index']],
                 ],

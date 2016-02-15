@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Mahasiswa';
+$this->title = 'Mahasiswas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mahasiswa-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Tambah data Mahasiswa', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Mahasiswa', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,13 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'nim',
             'nama',
             'no_telpon',
-            ['attribute' => 'progdi','value'=>'progdi.nama_progdi'],
-            // ['attribute'=>'konsentrasi','value'=>'konsentrasi.nama_konsentrasi'],
-            // 'progdi',
-            'konsentrasi',
-            // 'judul',
+            'progdi',
+            'judul',
             // 'status',
             // 'deskripsi:ntext',
+            // 'foto',
+            // 'proposal',
+            // 'kst',
+            // 'transkrip',
+            // 'usulan_pembimbing_1',
+            // 'usulan_pembimbing_2',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

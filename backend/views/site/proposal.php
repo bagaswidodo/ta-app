@@ -27,6 +27,10 @@ $this->title = 'Proposal Skripsi Mahasiswa';
             'nama_mahasiswa',
             'judul',
             'nama_dosen',
+            'foto',
+            'proposal',
+            'kst',
+            'transkrip',
             // 'nama_progdi',
 
             ['class' => 'yii\grid\ActionColumn'],

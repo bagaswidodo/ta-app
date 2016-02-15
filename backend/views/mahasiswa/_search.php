@@ -23,13 +23,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'progdi') ?>
 
-    <?= $form->field($model, 'konsentrasi') ?>
-
-    <?php // echo $form->field($model, 'judul') ?>
+    <?= $form->field($model, 'judul') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'deskripsi') ?>
+
+    <?php // echo $form->field($model, 'foto') ?>
+
+    <?php // echo $form->field($model, 'proposal') ?>
+
+    <?php // echo $form->field($model, 'kst') ?>
+
+    <?php // echo $form->field($model, 'transkrip') ?>
+
+    <?php // echo $form->field($model, 'usulan_pembimbing_1') ?>
+
+    <?php // echo $form->field($model, 'usulan_pembimbing_2') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

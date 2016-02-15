@@ -32,10 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama',
             'no_telpon',
             'progdi',
-            'konsentrasi',
             'judul',
             'status',
             'deskripsi:ntext',
+            'foto',
+            'proposal',
+            'kst',
+            'transkrip',
+            'usulan_pembimbing_1',
+            'usulan_pembimbing_2',
         ],
     ]) ?>
 

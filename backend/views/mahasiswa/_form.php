@@ -16,17 +16,27 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'no_telpon')->textInput() ?>
+    <?= $form->field($model, 'no_telpon')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'progdi')->textInput() ?>
-
-    <?= $form->field($model, 'konsentrasi')->textInput() ?>
 
     <?= $form->field($model, 'judul')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'deskripsi')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'foto')->textInput() ?>
+
+    <?= $form->field($model, 'proposal')->textInput() ?>
+
+    <?= $form->field($model, 'kst')->textInput() ?>
+
+    <?= $form->field($model, 'transkrip')->textInput() ?>
+
+    <?= $form->field($model, 'usulan_pembimbing_1')->textInput() ?>
+
+    <?= $form->field($model, 'usulan_pembimbing_2')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

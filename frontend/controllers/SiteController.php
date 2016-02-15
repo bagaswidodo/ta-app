@@ -89,9 +89,9 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            // return $this->goBack();
+            return $this->goBack();
             
-           return $this->redirect(\yii\helpers\Url::to(['site/index']));
+           // return $this->redirect(\yii\helpers\Url::to(['site/index']));
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -216,11 +216,10 @@ class SiteController extends Controller
 
     public function actionBimbingan()
     {
-        $sql = "select m.nim,m.nama,m.judul,p.nama_progdi,k.nama_konsentrasi
+        $sql = "select m.nim,m.nama,m.judul,p.nama_progdi
                 from tb_bimbingan b
                 join tb_mhs m on m.nim = b.nim
                 join tb_progdi p on p.kd_progdi = m.progdi
-                join tb_konsentrasi k on k.kd_konsentrasi = m.konsentrasi
                 where b.kd_dosen = :dosen";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,

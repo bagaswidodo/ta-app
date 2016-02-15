@@ -11,14 +11,18 @@ use Yii;
  * @property string $nama
  * @property string $no_telpon
  * @property integer $progdi
- * @property integer $konsentrasi
  * @property string $judul
  * @property integer $status
  * @property string $deskripsi
+ * @property integer $foto
+ * @property integer $proposal
+ * @property integer $kst
+ * @property integer $transkrip
+ * @property integer $usulan_pembimbing_1
+ * @property integer $usulan_pembimbing_2
  *
  * @property TbBimbingan[] $tbBimbingans
  * @property TbProgdi $progdi0
- * @property TbKonsentrasi $konsentrasi0
  */
 class Mahasiswa extends \yii\db\ActiveRecord
 {
@@ -36,8 +40,8 @@ class Mahasiswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nim', 'nama', 'no_telpon', 'progdi', 'konsentrasi', 'judul', 'status', 'deskripsi'], 'required'],
-            [['nim', 'progdi', 'konsentrasi', 'status'], 'integer'],
+            [['nim', 'nama', 'no_telpon', 'progdi', 'judul', 'status', 'deskripsi', 'foto', 'proposal', 'kst', 'transkrip', 'usulan_pembimbing_1', 'usulan_pembimbing_2'], 'required'],
+            [['nim', 'progdi', 'status', 'foto', 'proposal', 'kst', 'transkrip', 'usulan_pembimbing_1', 'usulan_pembimbing_2'], 'integer'],
             [['deskripsi'], 'string'],
             [['nama'], 'string', 'max' => 100],
             [['no_telpon'], 'string', 'max' => 20],
@@ -55,10 +59,15 @@ class Mahasiswa extends \yii\db\ActiveRecord
             'nama' => 'Nama',
             'no_telpon' => 'No Telpon',
             'progdi' => 'Progdi',
-            'konsentrasi' => 'Konsentrasi',
             'judul' => 'Judul',
             'status' => 'Status',
             'deskripsi' => 'Deskripsi',
+            'foto' => 'Foto',
+            'proposal' => 'Proposal',
+            'kst' => 'Kst',
+            'transkrip' => 'Transkrip',
+            'usulan_pembimbing_1' => 'Usulan Pembimbing 1',
+            'usulan_pembimbing_2' => 'Usulan Pembimbing 2',
         ];
     }
 
@@ -67,22 +76,14 @@ class Mahasiswa extends \yii\db\ActiveRecord
      */
     public function getTbBimbingans()
     {
-        return $this->hasMany(Bimbingan::className(), ['nim' => 'nim']);
+        return $this->hasMany(TbBimbingan::className(), ['nim' => 'nim']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProgdi()
+    public function getProgdi0()
     {
-        return $this->hasOne(Progdi::className(), ['kd_progdi' => 'progdi']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getKonsentrasi()
-    {
-        return $this->hasOne(Konsentrasi::className(), ['kd_konsentrasi' => 'konsentrasi']);
+        return $this->hasOne(TbProgdi::className(), ['kd_progdi' => 'progdi']);
     }
 }
