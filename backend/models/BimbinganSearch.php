@@ -18,7 +18,7 @@ class BimbinganSearch extends Bimbingan
     public function rules()
     {
         return [
-            [['id', 'nim', 'kd_dosen'], 'integer'],
+            [['id', 'nim', 'kd_dosen', 'dosen_dua'], 'integer'],
         ];
     }
 
@@ -58,6 +58,7 @@ class BimbinganSearch extends Bimbingan
             'id' => $this->id,
             'nim' => $this->nim,
             'kd_dosen' => $this->kd_dosen,
+            'dosen_dua' => $this->dosen_dua,
         ]);
 
         return $dataProvider;

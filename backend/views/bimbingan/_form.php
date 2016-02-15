@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use common\models\Mahasiswa;
+use backend\models\Dosen;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Bimbingan */
@@ -12,11 +15,18 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
-
-    <?= $form->field($model, 'nim')->textInput() ?>
-
-    <?= $form->field($model, 'kd_dosen')->textInput() ?>
+     <?=
+        $form->field($model,'nim')->dropDownList(
+            ArrayHelper::map(Mahasiswa::find()->all(),'nim','nim'))
+     ?>
+     <?=
+        $form->field($model,'kd_dosen')->dropDownList(
+            ArrayHelper::map(Dosen::find()->all(),'kd_dosen','nama'))
+     ?>
+     <?=
+        $form->field($model,'dosen_dua')->dropDownList(
+            ArrayHelper::map(Dosen::find()->all(),'kd_dosen','nama'))
+     ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Bimbingan */
 
-$this->title = 'Create Bimbingan';
+$this->title = 'Buat Bimbingan';
 $this->params['breadcrumbs'][] = ['label' => 'Bimbingans', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

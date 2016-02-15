@@ -3,11 +3,13 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Bimbingan;
-use backend\models\BimbinganSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Bimbingan;
+use yii\filters\AccessControl;
+use backend\models\BimbinganSearch;
+use yii\web\NotFoundHttpException;
+
 
 /**
  * BimbinganController implements the CRUD actions for Bimbingan model.
@@ -17,6 +19,16 @@ class BimbinganController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -63,7 +75,8 @@ class BimbinganController extends Controller
         $model = new Bimbingan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +95,9 @@ class BimbinganController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+
         } else {
             return $this->render('update', [
                 'model' => $model,

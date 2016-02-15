@@ -10,9 +10,11 @@ use Yii;
  * @property integer $id
  * @property integer $nim
  * @property integer $kd_dosen
+ * @property integer $dosen_dua
  *
  * @property TbMhs $nim0
  * @property TbDosen $kdDosen
+ * @property TbDosen $dosenDua
  */
 class Bimbingan extends \yii\db\ActiveRecord
 {
@@ -30,8 +32,9 @@ class Bimbingan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'nim', 'kd_dosen'], 'required'],
-            [['id', 'nim', 'kd_dosen'], 'integer']
+            [['nim', 'kd_dosen'], 'required'],
+            [['nim', 'kd_dosen', 'dosen_dua'], 'integer'],
+            [['kd_dosen'], 'unique']
         ];
     }
 
@@ -43,7 +46,8 @@ class Bimbingan extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nim' => 'Nim',
-            'kd_dosen' => 'Nama Dosen',
+            'kd_dosen' => 'Pembimbing 1',
+            'dosen_dua' => 'Pembimbing 2',
         ];
     }
 
@@ -61,5 +65,13 @@ class Bimbingan extends \yii\db\ActiveRecord
     public function getKdDosen()
     {
         return $this->hasOne(TbDosen::className(), ['kd_dosen' => 'kd_dosen']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDosenDua()
+    {
+        return $this->hasOne(TbDosen::className(), ['kd_dosen' => 'dosen_dua']);
     }
 }
